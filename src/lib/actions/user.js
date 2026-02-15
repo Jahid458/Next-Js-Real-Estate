@@ -1,13 +1,13 @@
-import User from '../models/user.model';
+import User from "../models/user.model";
 
-import { connect } from '../mongodb/mongoose';
+import { connect } from "../mongodb/mongoose";
 
 export const createOrUpdateUser = async (
   id,
   first_name,
   last_name,
   image_url,
-  email_addresses
+  email_addresses,
 ) => {
   try {
     await connect();
@@ -21,11 +21,11 @@ export const createOrUpdateUser = async (
           email: email_addresses[0].email_address,
         },
       },
-      { upsert: true, new: true }
+      { upsert: true, new: true },
     );
     return user;
   } catch (error) {
-    console.log('Error: Could not create or update user:', error);
+    console.log("Error: Could not create or update user:", error);
   }
 };
 
@@ -34,6 +34,6 @@ export const deleteUser = async (id) => {
     await connect();
     await User.findOneAndDelete({ clerkId: id });
   } catch (error) {
-    console.log('Error: Could not delete user:', error);
+    console.log("Error: Could not delete user:", error);
   }
 };

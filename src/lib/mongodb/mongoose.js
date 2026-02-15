@@ -13,12 +13,13 @@ export const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
       dbName: 'real_estate',
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      // useNewUrlParser: true,
+      // useUnifiedTopology: true,
     });
     initialized = true;
-    console.log('MongoDB connected');
+    console.log('MongoDB connected Successfuly!!');
   } catch (error) {
     console.log('MongoDB connection error:', error);
+    throw error; //When we know the connection failed 
   }
 };

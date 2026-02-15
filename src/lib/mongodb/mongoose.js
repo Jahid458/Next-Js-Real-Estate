@@ -12,7 +12,7 @@ export const connect = async () => {
 
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
-      dbName: 'next-estate',
+      dbName: 'real_estate',
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
@@ -20,6 +20,5 @@ export const connect = async () => {
     console.log('MongoDB connected');
   } catch (error) {
     console.log('MongoDB connection error:', error);
-    throw new Error('MongoDB connection failed');
   }
 };
